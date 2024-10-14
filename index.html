@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tienda de objetos coleccionables">
+    <title>Tienda de Coleccionables</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo de la tienda"/>
+            <h1>Wandering Merchant</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#categorias">Categorías</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#nosotros">Sobre Nosotros</a></li>
+            </ul>
+        </nav>
+
+        <!-- Carrito de compras -->
+    <div class="carrito">
+        <a href="#" id="abrirCarrito">🛒 Carrito (<span id="cantidadCarrito">0</span>)</a>
+    </div>
+</header>
+<!-- Sección del carrito flotante -->
+<div id="carritoModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarCarrito()">&times;</span>
+        <h2>Tu carrito</h2>
+        <div id="listaCarrito"></div>
+        <p><strong>Total: $</strong><span id="totalCarrito">0</span></p>
+        <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+        
+        
+
+    </div>
+</div>
+
+    <section id="inicio" class="hero">
+        <h2>Bienvenido a la tienda de objetos coleccionables</h2>
+        <p>Explora nuestra colección única de artículos raros y exclusivos</p>
+    </section>
+
+    <!-- Sección de categorías -->
+    <section id="categorias" class="categorias">
+        <h2>Categorías de Productos</h2>
+        <ul>
+            <li><a href="#" data-categoria="todos" onclick="filtrarProductos('todos')">Todos</a></li>
+            <li><a href="#" data-categoria="Figuras Coleccionables" onclick="filtrarProductos('Figuras Coleccionables')">Figuras Coleccionables</a></li>
+            <li><a href="#" data-categoria="Cómics Raros" onclick="filtrarProductos('Cómics Raros')">Cómics Raros</a></li>
+            <li><a href="#" data-categoria="Tarjetas de Colección" onclick="filtrarProductos('Tarjetas de Colección')">Tarjetas de Colección</a></li>
+            <li><a href="#" data-categoria="Estatuas" onclick="filtrarProductos('Estatuas')">Estatuas</a></li>
+            <li><a href="#" data-categoria="Posters" onclick="filtrarProductos('Posters')">Posters</a></li>
+            <li><a href="#" data-categoria="Ropa y Accesorios" onclick="filtrarProductos('Ropa y Accesorios')">Ropa y Accesorios</a></li>
+            <li><a href="#" data-categoria="Videojuegos Retro" onclick="filtrarProductos('Videojuegos Retro')">Videojuegos Retro</a></li>
+            <li><a href="#" data-categoria="Artículos Firmados" onclick="filtrarProductos('Artículos Firmados')">Artículos Firmados</a></li>
+            <li><a href="#" data-categoria="Juguetes de Época" onclick="filtrarProductos('Juguetes de Época')">Juguetes de Época</a></li>
+            <li><a href="#" data-categoria="Modelos a Escala" onclick="filtrarProductos('Modelos a Escala')">Modelos a Escala</a></li>
+            <li><a href="#" data-categoria="Monedas y Billetes" onclick="filtrarProductos('Monedas y Billetes')">Monedas y Billetes</a></li>
+            <li><a href="#" data-categoria="Pins y Broches" onclick="filtrarProductos('Pins y Broches')">Pins y Broches</a></li>
+            <li><a href="#" data-categoria="Puzzles y Rompecabezas" onclick="filtrarProductos('Puzzles y Rompecabezas')">Puzzles y Rompecabezas</a></li>
+            <li><a href="#" data-categoria="Juegos de Mesa" onclick="filtrarProductos('Juegos de Mesa')">Juegos de Mesa</a></li>
+            <li><a href="#" data-categoria="Lámparas y Decoración" onclick="filtrarProductos('Lámparas y Decoración')">Lámparas y Decoración</a></li>
+            <li><a href="#" data-categoria="Vinilos y Discos" onclick="filtrarProductos('Vinilos y Discos')">Vinilos y Discos</a></li>
+        </ul>
+    </section>
+    
+    
+
+    <section id="productos" class="productos">
+        <h2>Nuestros Productos</h2>
+        <div class="grid-productos">
+            <div class="producto" data-id="1" data-sku="A001" data-nombre="Figura Coleccionable" data-precio="50" data-peso="0.5" data-descripcion="Figura coleccionable edición limitada." data-imagen="images/deadpool.jpg" data-categoria="Figuras Coleccionables" data-fecha="2024-09-24" data-stock="5">
+                <img src="images/deadpool.jpg" alt="Producto 1">
+                <h3>Figura Coleccionable</h3>
+                <p>$50.00</p>
+                <button onclick="agregarAlCarrito(1, 'Figura Coleccionable', 50)">Agregar al carrito</button>
+                <button onclick="mostrarDetalles(this)">Ver detalles</button>
+            </div>
+            <div class="producto" data-id="2" data-sku="B002" data-nombre="Cómic Raro" data-precio="35" data-peso="0.2" data-descripcion="Cómic raro en excelente estado." data-imagen="images/foto2.jpg" data-categoria="Cómics Raros" data-fecha="2024-08-10" data-stock="3">
+                <img src="images/foto2.jpg" alt="Producto 2">
+                <h3>Cómic Raro</h3>
+                <p>$35.00</p>
+                <button onclick="agregarAlCarrito(2, 'Cómic Raro', 35)">Agregar al carrito</button>
+                <button onclick="mostrarDetalles(this)">Ver detalles</button>
+            </div>
+            <div class="producto" data-id="3" data-sku="C003" data-nombre="Tarjeta de Colección" data-precio="20" data-peso="0.01" data-descripcion="Tarjeta de colección de edición limitada." data-imagen="images/foto3.jpg" data-categoria="Tarjetas de Colección" data-fecha="2024-07-15" data-stock="10">
+                <img src="images/foto3.jpg" alt="Producto 3">
+                <h3>Tarjeta de Colección</h3>
+                <p>$20.00</p>
+                <button onclick="agregarAlCarrito(3, 'Tarjeta de Colección', 20)">Agregar al carrito</button>
+                <button onclick="mostrarDetalles(this)">Ver detalles</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para mostrar los detalles del producto -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h2 id="nombre"></h2>
+            <img id="imagen" src="" alt="Imagen del producto">
+            <p><strong>ID:</strong> <span id="id"></span></p>
+            <p><strong>SKU:</strong> <span id="sku"></span></p>
+            <p><strong>Precio:</strong> $<span id="precio"></span></p>
+            <p><strong>Peso:</strong> <span id="peso"></span> kg</p>
+            <p><strong>Descripción:</strong> <span id="descripcion"></span></p>
+            <p><strong>Categoría:</strong> <span id="categoria"></span></p>
+            <p><strong>Fecha de creación:</strong> <span id="fecha"></span></p>
+            <p><strong>Stock:</strong> <span id="stock"></span></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Tienda de Coleccionables. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
